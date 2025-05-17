@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var v1 = "fd";
+        console.log(v1)
+        //var: reassign and redeclare the value, it has function scope
+        function a (){
+            var v1=39;
+            console.log(v1);
+            var v1=38;
+            console.log(v1);
+        }
+        a();
+        console.log(v1)
+        //let: it is block scope we cannot redelcare, but reassigned the let variable in same block level scope
+        //const: it can't be redeclare and cannot be reassigned.
+
+
+        let num1 = 34;
+        let num2 = 34;
+        console.log("add: "+num1+num2)
+        let radius = 5;
+        document.write("area of circle is: "+(Math.PI*radius*radius));
+        var z =10;
+        // let z = 23;
+        
+        console.log(z+z);
+    </script>
+</body>
+</html>
