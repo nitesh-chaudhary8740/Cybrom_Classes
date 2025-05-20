@@ -35,6 +35,8 @@ while(parseInt(temp/10)>0){
 const firstDigit = temp;
 console.log('first digit: ',firstDigit)
 console.log('last digit: ',lastDigit)
+const arr = [1,2,34,45];
+console.log(Object.keys(arr))
 //firs last digit - and sum
 //10 input from array and sum of them 
 

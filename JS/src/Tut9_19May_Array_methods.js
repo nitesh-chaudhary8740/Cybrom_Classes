@@ -1,0 +1,17 @@
+const myArr = [2,43,'nik',{hi:"hello"}]
+console.log(myArr)
+myArr.push('new value','antoher value',45,{key:'value'},Symbol('mySymbol'))//multiple values can be pushed
+console.log(myArr)
+myArr.pop()
+console.log(myArr)
+myArr.unshift('unshifted value')
+console.log(myArr)
+const shiftedValue = myArr.shift()
+console.log(shiftedValue)
+console.log(myArr)
+const slicedArray = myArr.slice(-1)
+console.log(slicedArray)
+console.log(myArr)
+myArr.splice(3,2,'hello')
+console.log(myArr)
+console.log(Array.prototype)
