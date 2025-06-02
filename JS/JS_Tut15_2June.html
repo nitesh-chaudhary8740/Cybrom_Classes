@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="counter">0</h1>
+    <button onclick="inc()">+</button>
+    <button onclick="dec()">-</button>
+    <button onclick="reset()">Reset</button>
+    <h1 id="msg" onmouseenter="onHover()" onmouseleave="onLeave()">Hover on me</h1>
+</body>
+<script>
+   const disp = document.getElementById("counter");
+   const msgElement = document.getElementById("msg")
+   const msg1 = "Hover on me";
+   const msg2 = "Get out";
+   let counterVar = 0;
+   function inc(){
+        counterVar++;
+        disp.textContent = counterVar;
+   }
+   function dec(){
+    if(counterVar<1){
+       return 
+    }
+        counterVar--;
+        disp.textContent = counterVar;
+   }
+   function reset(){
+    counterVar = 0
+    disp.textContent = counterVar;
+   }
+function onHover(){
+    msgElement.style.color = "blue"
+    msgElement.textContent = msg2
+}
+function onLeave(){
+    msgElement.style.color = "black"
+    msgElement.textContent = msg1
+}
+</script>
+</html>
