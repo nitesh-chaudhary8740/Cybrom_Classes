@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0%;
+            padding: 0%;
+        }
+        
+        .container {
+            border: 20px solid;
+            display: flex;
+            gap: 40vh;
+            height: 100vh;
+            box-sizing: border-box;
+            background-color: rgb(25, 25, 25);
+            padding:10vh;
+        }
+        .main-img-priview-cont{
+            /* border: 2px solid green; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+     
+            
+        }
+        .side-images-cont {
+            /* border: 2px solid red; */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2vh;
+
+        }
+
+        .side-images {
+            
+            border-radius: 1vh;
+            border: 2px solid rgb(52, 176, 243);
+            height: 15vh;
+            width: 20vh;
+        }
+        #preview{
+                height: 80%;
+                width: 100%;
+                border-radius: 1vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <span class="side-images-cont">
+            <img src="https://images4.alphacoders.com/134/thumbbig-1347179.webp" class="side-images" id="img-1" onmouseenter="changeImgOnHover(`https://images4.alphacoders.com/134/thumbbig-1347179.webp`)">
+            <img src="https://images4.alphacoders.com/134/thumbbig-1347288.webp" class="side-images" id="img-2" onmouseenter="changeImgOnHover(`https://images4.alphacoders.com/134/thumbbig-1347288.webp`)" >
+            <img src="https://images.alphacoders.com/128/thumbbig-1283924.webp" class="side-images" id="img-3" onmouseenter="changeImgOnHover(`https://images.alphacoders.com/128/thumbbig-1283924.webp`)" >
+            <img src="https://images3.alphacoders.com/135/thumbbig-1351305.webp" class="side-images" id="img-4" onmouseenter="changeImgOnHover(`https://images3.alphacoders.com/135/thumbbig-1351305.webp`)">
+            <img src="https://images.alphacoders.com/135/thumb-1920-1351306.png" class="side-images" id="img-5"  onmouseenter="changeImgOnHover(`https://images.alphacoders.com/135/thumb-1920-1351306.png`)">
+        </span>
+        <span class="main-img-priview-cont">
+            <img src="https://images4.alphacoders.com/134/thumbbig-1347179.webp" alt="" id="preview">
+        </span>
+    </div>
+
+</body>
+<script>
+    function changeImgOnHover(imgAddress){
+        document.getElementById("preview").src=imgAddress
+    }
+</script>
+
+</html>

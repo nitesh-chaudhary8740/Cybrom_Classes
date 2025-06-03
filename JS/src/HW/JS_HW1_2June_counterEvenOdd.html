@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            background-color: gray;
+            display: flex;
+            flex-direction: column;
+            gap: 4vh;
+            border: 2px solid;
+            justify-content: center;
+            height: 30vh;
+            width: 30vh;
+            position: relative;
+           top: 40vh;
+           box-sizing: border-box;
+           left: 45vw;
+        }
+        h1{
+            text-align: center;
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 5vh;
+        }
+        .button-container{
+            font-size: 10vh;
+            width: 100%;
+            /* border: 2px solid; */
+            display: flex;
+            gap:1vh;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+        #inc{
+           
+            color: white;
+            background-color: green;
+            /* height: 4vh; */
+        
+        }
+        #dec{
+            color: white;
+            background-color: red;
+        }
+        #reset{
+            color: white;
+            background-color: skyblue;
+        }
+       .btn{
+        font-size: 4vh;
+        padding: 1vh 2vh;
+        border: none;
+       }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="counter" on>0</h1>
+        <div class="button-container">
+
+            <button id="inc" class="btn" onclick="increment()">+ </button>
+            <button id="reset" class="btn" onclick="reset()">Reset</button>
+            <button id="dec" class="btn" onclick="decrement()">-</button>
+        </div>
+    </div>
+</body>
+<script>
+    const counterDisplayElement = document.getElementById("counter");
+    let counterValue = 0;
+    function increment(){
+        counterValue++;
+        if(counterValue%2===0 && counterValue!==0){
+            counterDisplayElement.style.color ="red"
+            counterDisplayElement.textContent = counterValue;
+            return;
+        }
+            counterDisplayElement.style.color ="black"
+            counterDisplayElement.textContent = counterValue;
+    }
+    function decrement(){
+        if(counterValue<1){
+            return;
+        }
+        counterValue--;
+        if(counterValue%2===0 && counterValue!==0){
+            counterDisplayElement.style.color ="red"
+            counterDisplayElement.textContent = counterValue;
+            return;
+        }
+            counterDisplayElement.style.color ="black"
+            counterDisplayElement.textContent = counterValue
+
+    }
+    function reset(){
+        counterValue=0;
+        counterDisplayElement.style.color ="black"
+        counterDisplayElement.textContent = counterValue;
+    }
+</script>
+</html>
