@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .color-box{
+            border: 2px solid;
+            height: 50vh;
+            width: 50vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="color-box"></div>
+   enter str: <input type="text" id="inp" onkeyup="onInp()">
+   enter exp: <input type="text" id="calc" onkeyup="calc()">
+  
+<h1 id="disp" ></h1>
+</body>
+<script>
+    //onchange when out of focus and blur
+const element = document.getElementById('inp');
+
+function onInp(){  
+    console.log(element.value)
+}
+const calcEle = document.getElementById('calc')
+function calc(){
+    let res = eval(calcEle.value);
+    document.getElementById('disp').textContent = res;
+}
+</script>
+</html>

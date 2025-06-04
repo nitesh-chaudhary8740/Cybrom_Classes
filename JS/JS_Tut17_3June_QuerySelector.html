@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0%;
+            padding: 0%;
+        }
+    </style>
+</head>
+<body>
+    <p id="para" class="pr">this is paragraph</p>
+    <p id="para2" class="pr">this is paragraph</p>
+    <p id="para22" class="pr">this is paragraph</p>
+    <p id="para54" class="pr">this is paragraph</p>
+    
+</body>
+<script>
+    // element.style.cssText = "all css properties"
+    document.querySelector('p').style.cssText="color:white;background-color:black"
+    const collectin = document.getElementsByClassName('pr')
+    console.log(collectin[0])
+    const collectin1 = document.querySelectorAll('.pr')
+    // console.log(collectin, typeof collectin1)
+    collectin1.forEach(ele=>
+        console.log(ele)
+    )
+    
+</script>
+</html>
