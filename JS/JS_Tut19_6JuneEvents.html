@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="input1">
+     <h1 tabindex="0">tabindex use to make element focusable</h1>
+     <!-- //input tag already have this attribute -->
+    <input type="text"  onkeyup="console.log('this is onkey')">
+    <input type="text"  onkeydown="console.log('this is onkeydown')">
+    <input type="text"  onkeypress="console.log('this is onkeypress')">
+</body>
+<script>
+    //js arrow function function
+    const obj = {
+        msg:"this is msg",
+        arrow:()=>{
+            console.log("this")
+        }
+    }
+    const myArrow = ()=>{
+        console.log("this is arrow function")
+        console.log(this)
+    }   
+    
+</script>
+</html>
