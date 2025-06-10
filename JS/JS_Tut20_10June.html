@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="cont">
+
+    </div>
+</body>
+<script>
+    const cont = document.getElementById('cont');
+    const images = 
+        [
+        "https://images4.alphacoders.com/134/thumbbig-1347179.webp",
+        "https://images4.alphacoders.com/134/thumbbig-1347288.webp",
+        "https://images.alphacoders.com/128/thumbbig-1283924.webp",
+        "https://images3.alphacoders.com/135/thumbbig-1351305.webp",
+        "https://images.alphacoders.com/135/thumb-1920-1351306.png"
+        ]     
+ const img = images.map(e=>
+        `<img src=${e} alt="img">`
+    )
+   const arr=  [1,2,3]
+   arr.map((e,i)=>{
+        arr[i]=4
+        e=8;//value passeed
+    })
+    console.log(arr)
+    cont.innerHTML = img.join("");
+</script>
+
+</html>

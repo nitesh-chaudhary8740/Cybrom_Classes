@@ -1,25 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    Enter num1: <input type="text" id="inp1">
-    Enter num2: <input type="text" id="inp2">
-    <button onclick="sum()">add</button>
-    <h1 id="show"></h1>
+  </head>
+  <body>
+    <div class="cont">
+      Start: <input type="text" id="inp1" /> End:
+      <input type="text" id="inp2" />
+      <button onclick="doIt()">Show</button>
+      <hr />
+      <span><strong>Pallendrom: </strong></span>
+      <span id="show-pallendrom"></span>
+      <br />
+      <hr />
+      <span><strong>Armstrong: </strong></span>
+      <span id="show-armstrong"></span>
+      <br />
+      <hr />
+      <span><strong>Prime: </strong></span> <span id="show-prime"></span>
+    </div>
+  </body>
+  <script>
+    const inp1 = document.getElementById("inp1");
+    const inp2 = document.getElementById("inp2");
+    const showP = document.getElementById("show-pallendrom");
+    const showA = document.getElementById("show-armstrong");
+    const showPr = document.getElementById("show-prime");
+    const pallendrom = [];
+    const armstrong = [];
+    const prime = [];
 
-</body>
-<script>
-    const inp1 = document.getElementById('inp1');
-    const inp2 = document.getElementById('inp2');
-    const show = document.getElementById('show')
-    
-    const sum = ()=>{
-      show.textContent =   Number(inp1.value) + Number(inp2.value);   
+    const isPallendrom = (number) => {
+      let revString = number.split("").reverse().join("");
+      if (Number(revString) === Number(number)) return true;
+      return false;
+    };
+    const isArmstrong = (number) => {
+      let sumOfEachDigitExpo = 0;
+      String(number)
+        .split("")
+        .forEach((n) => {
+          sumOfEachDigitExpo += Math.pow(Number(n), String(number).length);
+        });
+      if (sumOfEachDigitExpo === number) return true;
+      return false;
+    };
+    const isPrime = (number) => {
+      for (let i = 2; i <= number / 2; i++) {
+        if (number % i === 0 && number > 3) return false;
+      }
+      return true;
     }
 
-</script>
+    const doIt = () => {
+      for (let i = Number(inp1.value); i <= Number(inp2.value); i++) {
+        if (isPallendrom(String(i))) pallendrom.push(i);
+        if (isArmstrong(i)) armstrong.push(i);
+        if (isPrime(i)) prime.push(i);
+      }
+      showP.textContent = pallendrom.join(" ");
+      showA.textContent = armstrong.join(" ");
+      showPr.textContent = prime.join(" ");
+    };
+  </script>
 </html>
