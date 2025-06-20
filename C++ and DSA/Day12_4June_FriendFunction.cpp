@@ -9,6 +9,8 @@ class Number{
    ~Number(){
     cout<<"Number destructor is called";
    }
+
+   
    friend void show(Number n){//voilation of encapsulation a fucntion is accessing the private props without memeber function
         cout<<"number is this"<<n.number;
    }

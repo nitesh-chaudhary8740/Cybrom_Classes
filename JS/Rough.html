@@ -1,170 +1,484 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      #arrays-container {
-        border: 2px solid;
-      }
-      #add-array-dialougeBox {
-        display: none;
-        border: 2px solid;
-        width: 50vh;
-        height: 50vh;
-        position: absolute;
-        top: 20%;
-        left: 40%;
-      }
-      #update-array-dialougeBox{
-        display: none;
-        border: 2px solid;
-        width: 50vh;
-        height: 50vh;
-        position: absolute;
-        top: 20%;
-        left: 40%;
-      }
-      .arrays{
-        border: 2px solid blue;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="add-array-dialougeBox">
-      <label for="array-name-input">Enter Name of Array</label>
-      <input type="text" id="array-name-input" />
-      <label for="array-element-input">Enter First Element of Array</label>
-      <input type="text" id="array-element-input" />
-      <button id="add-new-array-btn">Create</button>
-    </div>
-    <div id="update-array-dialougeBox">
-    <h2 id="name-of-selected-array-for-update">Update array</h2>
-      <label for="array-elements-input">Enter the Element in Array</label>
-      <input type="text" id="array-update-element-input" />
-      <button id="update-array-btn">Update</button>
-    </div>
-    <div id="arrays-container">
-      <button id="create-new-array-btn">Create New Array</button>
-      <div id="show-arrays">
 
-      </div>
-    </div>
-  </body>
-  <script>
-
-    const arraysContainer = document.getElementById("show-arrays");
-    
-    const allArrays = [];
-    //create
-    const addArrayDialougeBox = document.getElementById("add-array-dialougeBox");
-    const createNewArrayBtn = document.getElementById("create-new-array-btn");
-
-    const arrayNameInput = document.getElementById("array-name-input")
-    const arrayElementInput = document.getElementById("array-element-input")
-    const addNewArrayBtn = document.getElementById("add-new-array-btn")
-    createNewArrayBtn.onclick = show_CreateNewArray_DilougeBox;
-    addNewArrayBtn.onclick = () =>{
-        console.log('is it clicked')
-        addNewArray();
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0%;
+      font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
-    
 
+    #arrays-container {
+      margin: 1%;
+      padding: 2vh;
 
-    //create handlers
-    function show_CreateNewArray_DilougeBox (){
-        Object.assign(addArrayDialougeBox.style, { display: "block" });
+      background: linear-gradient(125deg, #e2e8e7 0%, #8e8c90 100%);
+      height: 100vh;
+      border-radius: 2vh;
+      display: flex;
+      flex-direction: column;
+
+      /* width: 100vw; */
     }
-    function hide_CreateNewArray_DilougeBox (){
-        Object.assign(addArrayDialougeBox.style, { display: "none" });
+
+    .menu-btns {
+      border: 2px solid rgb(99, 99, 99);
+      color: rgb(244, 138, 8);
+      width: 35vh;
+      font-weight: bold;
+      font-size: 3vh;
+      padding: 15px;
+      border-radius: 10vh;
     }
-   
-    function addNewArray() {
-        if(!arrayNameInput.value || !arrayElementInput.value){
-              console.log(arrayNameInput.value)
-                console.log(arrayElementInput.value)
-                console.log("inside falsy value")
-                alert('provide a name for new array');
-                return;
-        }
-        console.log(arrayNameInput.value)
-        console.log(arrayElementInput.value)
-        const tempArr = [];
-        tempArr.push(arrayElementInput.value.trim())
-       
+
+    #show-arrays {
+      display: none;
+      border: 2px solid rgb(99, 99, 99);
+      color: rgb(244, 138, 8);
+      height: 100%;
+      /* justify-content: space-around; */
+      /* padding: 10%; */
+      flex-wrap: wrap;
+      /* flex-direction: column; */
+      gap: 2%;
+    }
+
+    #add-array-dialougeBox {
+      display: none;
+      border: 2px solid;
+      width: 40vh;
+      height: 40vh;
+      padding: 2%;
+      position: absolute;
+      top: 20%;
+      left: 40%;
+      background-color: #e2e8e7;
+      border: 2px solid rgb(99, 99, 99);
+      color: rgb(244, 138, 8);
+      font-weight: bold;
+      font-size: 3vh;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      /* gap: 2%; */
+    }
+
+    .input-fields {
+      /* border: 2px solid goldenrod; */
+      display: flex;
+      gap: 5%;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+    .input-fields input {
+
+      border-radius: 5vh;
+      height: 10%;
+      width: 80%;
+      padding: 1%;
+    }
+
+    #update-array-dialougeBox {
+      display: none;
+      border: 2px solid;
+      width: 50vh;
+      height: 50vh;
+      position: absolute;
+      top: 20%;
+      left: 40%;
+    }
+
+    .dil-box-btns {
+      /* border: 2px solid hotpink; */
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      /* gap: 50%; */
+    }
+
+    .btn-yes {
+      background-color: green;
+      color: #e2e8e7;
+      font-size: 2.5vh;
+      font-weight: bold;
+      padding: 3%;
+      border-radius: 5vh;
+    }
+
+    .btn-no {
+      background-color: red;
+      color: #e2e8e7;
+      font-size: 2.5vh;
+      font-weight: bold;
+      padding: 3%;
+      border-radius: 5vh;
       
-        allArrays.push({
-            name:arrayNameInput.value.trim(),
-            array:tempArr
-        });
-        arrayElementInput.value='';
-        arrayNameInput.value='';
-        hide_CreateNewArray_DilougeBox()
-        showAllArrays();
-    }
-    
-    //update array
-    const updateDilougeBox = document.getElementById('update-array-dialougeBox')
-    let selectedArrayIndex = null;
-
-     function show_UpdateArray_DilougeBox (){
-        Object.assign(updateDilougeBox.style, { display: "block" });
-    }
-    function hide_UpdateArray_DilougeBox (){
-        Object.assign(updateDilougeBox.style, { display: "none" });
-    }
-    
-    
-     const updateBtn = document.getElementById('update-array-btn');
-    updateBtn.onclick = updateParticulArray;
-
-    function selectForUpdate(e){
-        console.log('it clicked')
-        showAllArrays();
-        hide_CreateNewArray_DilougeBox();
-        show_UpdateArray_DilougeBox();
-        const idOfClickedElement= Number(e.target.id);//to find index of particular array
-        console.log(e.target.id)
-        selectedArrayIndex = idOfClickedElement??alert('idOfclikced element not found');
-       
-        hide_CreateNewArray_DilougeBox()
 
     }
-    function updateParticulArray(){
-        console.log("update clicked")
-        const updateInput = document.getElementById('array-update-element-input')
-        const updateInputValue = updateInput?.value||alert('fill input value');
-        console.log('array before',allArrays[selectedArrayIndex])
-        console.log('arr index',selectedArrayIndex)
-        if(selectedArrayIndex||selectedArrayIndex===0){
-           allArrays[selectedArrayIndex].array.push(updateInputValue);
-           console.log("array after",allArrays)
-        }
-        updateInput.value ='';
-        hide_UpdateArray_DilougeBox()
-        showAllArrays();
-    }
-    //show/refresh list of arrays
 
-    function createDivForAllArrays (element,index){
-        const div = document.createElement('div');
-        div.setAttribute('id',`${element?.name}-${index}`||alert('name is not given'))
-        div.setAttribute('class','arrays')
-        div.innerHTML= `    
-        <h3>${element.name}</h3>
-        <p id= 'p-${element.name}-${index}'>${(element.array.map((e,i)=>{return `<span id = '${i}'>${e}</span>&nbsp`})).join(' ')}
-        <button id='${index}' onclick='selectForUpdate(event)'>update </button> 
-        `
+    .arrays {
+      height: 30%;
+      width: 20%;
+      margin: 1%;
+      border: 2px solid rgb(244, 138, 8);
+      background-color: #f57200;
+      border-radius: 3vh;
+      padding: 1%;
+      display: flex;
+      flex-direction: column;
+      gap: 5%;
 
-        arraysContainer.appendChild(div);
     }
-    function showAllArrays(){
-        arraysContainer.innerHTML = '';
-        allArrays.forEach((e,i)=>
-            createDivForAllArrays(e,i)
-        )
+
+    .color-black {
+      color: black;
     }
+    .color-white {
+      color: white;
+    }
+
+    /* view all dil-box */
+    #view-all-dilouge-box {
+      display: none;
+      border: 2px solid #8e8c90;
+      position: absolute;
+      top: 10%;
+      left: 30%;
+      height: 80vh;
+      width: 40vw;
+      flex-direction: column;
+      padding: 5%;
+      gap: 5%;
+      background-color: #e2e8e7;
+    };
+
+    .view-elements-container{
+        display: flex;
+        flex-direction: column;
+        gap: 4vh;
+        border: 2px solid red;
+    }
+    .view-header{
+      display: flex;
+      justify-content: space-between;
+    }
+    .view-elements{
+      display: flex;
+      /* justify-content: space-evenly; */
+      gap: 2%;
+      /* background-color: blue; */
+    }
+    #close-view-btn{
+      background-color: rgb(241, 59, 59);
+      color: #ffffff;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="add-array-dialougeBox">
+    <p>Create New Array</p>
+    <div class="input-fields">
+      <input type="text" id="array-name-input" placeholder="Enter Name of Array" />
+      <input type="text" id="array-element-input" placeholder="Enter First Element of Array" />
+    </div>
+    <div class="dil-box-btns">
+      <button id="add-new-array-cancel-btn" class="btn-no">Cancel</button>
+      <button id="add-new-array-btn" class="btn-yes">Create</button>
+    </div>
+  </div>
+  <!-- update-array-dialougeBox -->
+  <div id="update-array-dialougeBox">
+    <h2>
+      Append Element in array <span id="name-of-selected-array-for-update"> </span>
+    </h2>
+    <label for="array-elements-input">Enter the Element in Array</label>
+    <input type="text" id="array-update-element-input" />
+    <button id="update-array-btn">Append</button>
+  </div>
+  <!-- view-all-dilouge-box -->
+  <div id="view-all-dilouge-box" class="view-box">
+    <div class="view-header">
+      <h3 class="color-black">Array Name: <span id="read-view-name" ></span></h3>
+      <button id="close-view-btn">X</button>
+
+    </div>
+    <div id="view-targeted-array-elements" class="view-elements-container" >
+
+    </div>
+  </div>
+  <!-- arraysContainer -->
+  <div id="arrays-container">
+    <div class="menu">
+      <button id="create-new-array-btn" class="menu-btns">Create New Array +</button>
+      <button id="display-all-arrays-btn" class="menu-btns">Show Arrays</button>
+
+    </div>
+
+    <div id="show-arrays">
+
+    </div>
+  </div>
+
+</body>
+<script>
+  const arraysContainer = document.getElementById("show-arrays");
+
+  const allArrays = [];
+  //create
+  const addArrayDialougeBox = document.getElementById(
+    "add-array-dialougeBox"
+  ); //add new array dil-box
+  const createNewArrayBtn = document.getElementById("create-new-array-btn"); //button of create new arry(//to display create new arry dil-box)
+
+  const arrayNameInput = document.getElementById("array-name-input"); //input name of first array at creation
+  const arrayElementInput = document.getElementById("array-element-input"); //first element of array at creation
+  const addNewArrayBtn = document.getElementById("add-new-array-btn"); //the create button inside dialouge box for creating the arrya
+  const cancelAddNewArrayBtn = document.getElementById("add-new-array-cancel-btn"); //the cancek button inside dialouge box for cancelling the process of creating array
+
+  createNewArrayBtn.onclick = show_CreateNewArray_DilougeBox; //event to show create new arry dil-box
+  cancelAddNewArrayBtn.onclick = hide_CreateNewArray_DilougeBox; //event to show create new arry dil-box
+  addNewArrayBtn.onclick = addNewArray; //after passing the name of new array name and first element this will add new array
+
+  //create handlers
+  function show_CreateNewArray_DilougeBox() {
+    hide_UpdateArray_DilougeBox();
+    Object.assign(addArrayDialougeBox.style, { display: "flex" });
+  }
+  function hide_CreateNewArray_DilougeBox() {
+    arrayNameInput.value = '';
+    arrayElementInput.value = ''
+    Object.assign(addArrayDialougeBox.style, { display: "none" });
+  }
+
+  function addNewArray() {
+    if (!arrayNameInput.value || !arrayElementInput.value) {
+      //check if both name and first-element field are given
+      console.log(arrayNameInput.value);
+      console.log(arrayElementInput.value);
+      console.log("inside falsy value");
+      alert("provide a name for new array");
+      return;
+    }
+    console.log(arrayNameInput.value); //value array name input
+    console.log(arrayElementInput.value); //first element input
+    const tempArr = []; //this is temporary array which will be that particular array
+    tempArr.push(arrayElementInput.value.trim()); //pushed that first element input value on this array
+    allArrays.push({
+      // now push an object, which contains the particular array name, and that partiucular array's elements
+      name: arrayNameInput.value.trim(),
+      array: tempArr,
+    });
+    arrayElementInput.value = ""; //emptying both input fields
+    arrayNameInput.value = ""; //
+    hide_CreateNewArray_DilougeBox(); //hiding create dilouge box after creating a new array
+    showAllArrays(3);
+    /**
+      this methods render the elements according to the current allArrays(container of each array's object)
+      elements whenever it is called it will clear current innerHtml of container tag, and iterate over
+      allArrays (container array) and render the element
+       */
+  }
+  //================Display arrays/Read=============
+  const showAllArrayBtn = document.getElementById("display-all-arrays-btn");
+  showAllArrayBtn.onclick = toggleHideDisplayArraysContainer;
+  let arrays_Container_Is_Displayed = false;
+  function toggleHideDisplayArraysContainer() {
+    if (!arrays_Container_Is_Displayed) {
+      showAllArrays(3)
+      arraysContainer.style.display = 'flex';
+      arrays_Container_Is_Displayed = true;
+      showAllArrayBtn.textContent = 'Hide Arrays'
+      return;
+    }
+    arraysContainer.style.display = 'none';
+    showAllArrayBtn.textContent = 'Show Arrays'
+    arrays_Container_Is_Displayed = false;
+  }
+  //======================================update array======================
+
+  /**
+   * each array's container element in the allArrrays container, contains a update button, when this tbutton will be clicked
+   * a update dilouge box will appear and
+   * */
+  const updateDilougeBox = document.getElementById(
+    "update-array-dialougeBox"
+  ); // a dilouge box for updating
+  let selectedArrayIndex = null; //
+
+  function show_UpdateArray_DilougeBox() {
+    Object.assign(updateDilougeBox.style, { display: "block" });
+  }
+  function hide_UpdateArray_DilougeBox() {
+    Object.assign(updateDilougeBox.style, { display: "none" });
+  }
+
+  const updateBtn = document.getElementById("update-array-btn");
+  updateBtn.onclick = updateParticulArray;
+
+  function selectForUpdate(e) {
+    //this handler is allpiled in html template layout of each array update button onclick event attribute
+    console.log("it clicked");
+    showAllArrays(3);
+    const updateInput = (document.getElementById(
+      "array-update-element-input"
+    ).value = ""); //clearing input field for each new update dil-box
+    hide_CreateNewArray_DilougeBox(); //if create is open then hide
+    show_UpdateArray_DilougeBox(); //and update array dil-box display
+
+    //each update button's id indicate their index of in allArrays
+    const idOfClickedElement = Number(e.target.id); //to find index of particular array
+    selectedArrayIndex =
+      idOfClickedElement ?? alert("id of clikced element not found");
+    document.getElementById(
+      "name-of-selected-array-for-update"
+    ).textContent = `${allArrays[selectedArrayIndex].name}`;
+  }
+  function updateParticulArray() {
+    console.log("update clicked");
+    const updateInput = document.getElementById("array-update-element-input");
+    if (!updateInput.value) {
+      alert("fill input value");
+      return;
+    }
+    const updateInputValue = updateInput.value;
+    console.log("array before", allArrays[selectedArrayIndex]);
+    console.log("arr index", selectedArrayIndex);
+    if (selectedArrayIndex || selectedArrayIndex === 0) {
+      allArrays[selectedArrayIndex].array.push(updateInputValue);
+      console.log("array after", allArrays);
+    }
+    updateInput.value = "";
+    hide_UpdateArray_DilougeBox();
+    showAllArrays(3);
+  } //
+  //================================Delete Array ================================
+  function deleteParticularArray(index) {
+    hide_UpdateArray_DilougeBox()
+    console.log('delete clicked')
+    console.log(index)
+    allArrays.splice(index, 1);
+    showAllArrays(3)
+  }
+  //show/refresh list of arrays
+
+  function createDivForAllArrays(element, index, numOfVisibleElement) {
+    const div = document.createElement("div");
+    div.setAttribute(
+      "id",
+      `${element?.name}-${index}` || alert("name is not given")
+    );
+    div.setAttribute("class", "arrays");
+    div.innerHTML = `    
+        <h3><span class="color-black">Array Name: </span><span class="color-white">${element.name} </span></h3>
+        <div class=array-elements-display>
+        <p id= 'p-${element.name}-${index}' ><strong class='color-black'>Elements: </strong>${element.array.slice(0, numOfVisibleElement - 1)
+        .map((e, i) => {
+          return `&nbsp<span class="color-white" id = '${i}'>${e}</span>`;
+        })
+        .join(" ")}
+     <span> </span><button id='view-btn' onclick='displayViewDilBox(${index})'>View All</button>
+          </div>
+          <div class='array-btns '>
+        <button id='${index}' onclick='selectForUpdate(event)'>update</button> 
+        <button  onclick='deleteParticularArray(${index})'>delete</button>
+        </div> 
+        `;
+
+    arraysContainer.appendChild(div);
+  }
+  function showAllArrays(noOfVisibleElement) {
+    if (allArrays.length === 0) {
+      arraysContainer.innerHTML = `<p>List is empty, click on create new array to add new array</p>`
+      return;
+    }
+    arraysContainer.innerHTML = "";
+    allArrays.forEach((e, i) => createDivForAllArrays(e, i, noOfVisibleElement));
+  }
+
+  //==========================view==========================
+  // const viewBtn = document.getElementById('view-btn');//view-btn in each array
+  const closeViewBtn = document.getElementById("close-view-btn");//close-current-displayed array view dilbox
+  const viewDilougeBox = document.getElementById("view-all-dilouge-box");//view-dilbox
+  const allElementsContainer = document.getElementById("view-targeted-array-elements");//element container
+  closeViewBtn.onclick = () => {
+    toggleViewDilougeBox(false)
    
-  </script>
+    
+  }
+  function toggleViewDilougeBox(shouldDisplay) {
+    if (shouldDisplay) viewDilougeBox.style.display = 'flex'
+    else viewDilougeBox.style.display = 'none'
+  }
+  function displayViewDilBox(index) {
+    document.getElementById("read-view-name").textContent = `${allArrays[index].name}` || alert('null value')
+    allElementsContainer.innerHTML = 
+      allArrays[index].array.map((e, i) => {
+      return `<div class='view-elements'>
+            <span class='elements-value-holder'>${i+1}. ${e}</span>&nbsp
+          <button onclick = 'onModify(${index},${i})'>Modify</button> &nbsp
+          <button onclick = 'onRemove(${index},${i})'>Remove</button>
+                    </div>
+                    `
+    }).join(" ")
+    Object.assign(allElementsContainer.style,{
+    display:"flex",
+    // border:"2px solid",
+    "flex-direction":"column",
+    gap:"2vh",
+    color:'green',
+    "font-weight":"bold"
+    })
+    toggleViewDilougeBox(true)
+   
+  }
+                  //innerhtml bactick
+  
+  function onModify(allArraysIndex, selectedElementIndex) {
+    console.log('modify clicked')
+    console.log('all0',allArraysIndex)
+    console.log('all0',selectedArrayIndex)
+    allElementsContainer.innerHTML = allArrays[allArraysIndex].array.map((e, i) => {
+      if (selectedElementIndex === i) {
+        return `<div class='view-elements'>
+           <span class='elements-value-holder'>${i+1}. ${e} &nbsp : <input id='element-value'></span>&nbsp
+          
+          <button onclick='onSave(${allArraysIndex},${i})'>
+            save
+          </button> &nbsp
+          <button onclick='displayViewDilBox(${allArraysIndex})'>cancel</button>
+                    </div>
+                    `
+      }
+      else {
+        return `<div class='view-elements'>
+          <span class='elements-value-holder'>${i+1}. ${e}</span>&nbsp
+          <button onclick= 'onModify(${allArraysIndex},${i})' disabled="true">Modify</button> &nbsp
+          <button disabled="true">Remove</button>
+                    </div>
+                    `
+      }
+    }).join(" ")
+    hide_CreateNewArray_DilougeBox()
+    hide_UpdateArray_DilougeBox()
+  }
+  function onSave(allArraysIndex,selectedElementIndex,){
+        allArrays[allArraysIndex].array[selectedElementIndex] = document.getElementById('element-value').value;
+        displayViewDilBox(allArraysIndex);
+  }
+  function onRemove(allArraysIndex,selectedElementIndex){
+      allArrays[allArraysIndex].array.splice(selectedElementIndex,1)
+      showAllArrays(3)
+      displayViewDilBox(allArraysIndex)
+  }
+</script>
+
 </html>
