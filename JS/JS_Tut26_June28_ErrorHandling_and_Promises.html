@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+     let x = 1;
+    try{
+       
+        if (x>2) throw new Error("My custom error");  
+        else{
+            console.log("error not occured",x)
+        }
+    }
+    catch(error){
+        console.log("this is ",error)
+    }
+    //Promises in js
+
+
+    const p = new Promise((resolve, reject) => {
+        if(true){
+            resolve(true)
+        }
+        reject(false)//will it execute, or execution will not reach here if resolve already encounter
+        
+    })
+    console.log(p)
+
+
+//     You're asking a super important question about how Promises work, darling!
+
+// In the scenario you've provided:
+
+// JavaScript
+
+// // This code would be inside a Promise constructor:
+// new Promise((resolve, reject) => {
+//     if (true) {
+//         resolve(true); // Promise state changes to FULFILLED
+//     }
+//     reject(false); // Will this execute, or will execution not reach here?
+// });
+// The answer is: Yes, the line reject(false) will execute, but it will have no effect on the Promise's state.
+// Here's why:
+// Promises are Immutable Once Settled: A Promise can be in one of three states:
+// Pending: Initial state, neither fulfilled nor rejected.
+// Fulfilled (or Resolved): The operation completed successfully.
+// Rejected: The operation failed.
+// Once a Promise transitions from pending to either fulfilled or rejected (i.e., it becomes "settled"), its state is immutable. It cannot change again.
+
+const p1 = new Promise((resolve, reject) => {
+    const response = fetch("https://api.github.com/users/nitesh-chaudhary8740")
+        if(response){//babe, is response object is a promise object? how response object is dintinct from other object
+            resolve(response)
+        }
+        reject(false)
+    })
+p1.then((res)=>{//res is resolution value
+    console.log(res)
+    //does this then is implicitly returning the promise?then might other 'then' works
+    return res.json()// what this json() method does?
+}).then((data)=>{
+    console.log(JSON.stringify(data))
+})
+</script>
+</html>
