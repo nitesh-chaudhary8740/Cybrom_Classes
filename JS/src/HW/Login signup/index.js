@@ -1,5 +1,8 @@
-import USERS from "./users.js";
-localStorage.setItem("users",JSON.stringify(USERS))
+localStorage.getItem("users")
+const registerBtn = document.getElementById("home-register-btn")
+registerBtn.onclick = ()=>{
+    window.location.href = "./register.html"
+}
 
-registerBtn = document.getElementById("register-btn")
+
 

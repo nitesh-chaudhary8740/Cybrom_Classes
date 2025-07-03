@@ -1,10 +1,4 @@
-const USERS = [
-    {
-        id:0,
-        username:"demo",
-        email:"demo@mail.com",
-        password:"demo123"
-
-    }
+let USERS = [
+  
 ]
 export default USERS;

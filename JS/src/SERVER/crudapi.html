@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        products
+    </h1>
+    <div id="products"></div>
+    <button onclick="getAllProducts()" id="get-data-btn">get</button>
+
+    <form action="">
+        <fieldset>
+            <legend>Add Data Form</legend>
+            <input type="text" id="price">
+            <input type="text" id="title">
+            <button onclick="addProducts()">Add data</button>
+        </fieldset>
+    </form>
+    <form action="">
+        <fieldset>
+            <legend>Add Data Form</legend>
+           id: <input type="text" id="uid">
+            title:<input type="text" id="utitle">
+            price:<input type="text" id="uprice">
+            <button onclick=" updateData()">Update data</button>
+        </fieldset>
+    </form>
+</body>
+<script src="./app.js"></script>
+</html>

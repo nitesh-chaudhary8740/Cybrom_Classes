@@ -1,0 +1,24 @@
+{
+  "products": [
+    {
+      "title": "fdss",
+      "price": "dsfsdf",
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "title": "product2",
+      "price": 300
+    },
+    {
+      "id": "6eb9",
+      "title": {},
+      "price": {}
+    },
+    {
+      "id": "f885",
+      "title": "ilhi",
+      "price": "te"
+    }
+  ]
+}

@@ -28,3 +28,16 @@
     padding: 1vh;
     border-radius: 5vh;
 }
+#message-div{
+    position: absolute;
+    top: 5%;
+    right:5%;
+    height: 10vh;
+    width: 20vw;
+    border:  2px inset;
+}
+#message-bar-div{
+    /* width: 100%; */
+    background-color: rgb(4, 184, 4);
+    height: 5%;
+}
