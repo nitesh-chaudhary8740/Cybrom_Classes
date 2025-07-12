@@ -34,6 +34,7 @@ async function addProducts() {
         })
         
     } catch (error) {
+        
         console.log(error)
     }
     

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="redirect.html" onsubmit="formSubmit(event)">
+    Name:<input type="text" id="name"><br><br>
+    email:<input type="email" id="email"><br><br>
+    password:<input type="tex" id="password"><br><br>
+    re-enter:<input type="tex" id="re-password"><br><br>
+    <input type="submit" value="submit">
+    </form>
+    <h1 id="display">fill form</h1>
+    <script>
+        function formSubmit(event){
+            const name = document.getElementById("name").value
+            const email = document.getElementById("email").value
+            const password = document.getElementById("password").value
+            const rePassword = document.getElementById("re-password").value
+            if(!name || !email || !password || !rePassword){
+                event.preventDefault()
+                alert("fill all fields");
+                return;
+            }
+            if(password!==rePassword){
+                event.preventDefault()
+                alert("password should match");
+                return;
+            }     
+            document.getElementById("display").innerHTML = "form subblited"
+        }
+    
+    </script>
+</body>
+</html>
