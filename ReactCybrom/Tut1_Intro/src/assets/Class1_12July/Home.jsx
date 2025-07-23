@@ -4,9 +4,9 @@ import axios from "axios"
 import { useNavigate } from 'react-router-dom';
 
 function Home() {
-  const navigate = useNavigate()
+const navigate = useNavigate()
 const API = "http://localhost:4000/user";
-  const[formData,setFormData]=useState(
+const[formData,setFormData]=useState(
     {
     name:"",
     email:"",
