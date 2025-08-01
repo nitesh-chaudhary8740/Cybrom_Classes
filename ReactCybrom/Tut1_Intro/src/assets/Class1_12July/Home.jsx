@@ -3,9 +3,9 @@ import "../mycss/mystyle.css"
 import axios from "axios"
 import { useNavigate } from 'react-router-dom';
 
-function Home() {
+function Home({API}) {
 const navigate = useNavigate()
-const API = "http://localhost:4000/user";
+
 const[formData,setFormData]=useState(
     {
     name:"",

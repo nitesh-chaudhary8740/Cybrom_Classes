@@ -1,27 +1,6 @@
 {
   "user": [
     {
-      "id": "2757",
-      "name": "sdh",
-      "email": "hkjh",
-      "mobile": "khj",
-      "password": "kuh"
-    },
-    {
-      "id": "4a05",
-      "name": "",
-      "email": "",
-      "mobile": "",
-      "password": ""
-    },
-    {
-      "id": "a572",
-      "name": "",
-      "email": "",
-      "mobile": "",
-      "password": ""
-    },
-    {
       "id": "b21e",
       "name": "rew",
       "email": "df"
@@ -97,11 +76,32 @@
       "password": "iy"
     }
   ],
-
-  "customer":[
-        {
-            
-        }
+  "customer": [
+    {
+      "id": "39f5"
+    }
+  ],
+  "test": [
+    {
+      "id": "318a",
+      "name": "nitesh",
+      "email": "niteshchaudhary@mail.com",
+      "mobile": "mobile change",
+      "password": "new password1"
+    },
+    {
+      "id": "6bb3",
+      "name": "user1",
+      "email": "user@outlook.react",
+      "mobile": "100",
+      "password": "password"
+    },
+    {
+      "id": "fcc6",
+      "name": "add new one",
+      "email": "erjl",
+      "mobile": "jlk",
+      "password": "jlk"
+    }
   ]
-
 }

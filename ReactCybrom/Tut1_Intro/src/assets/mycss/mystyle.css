@@ -5,3 +5,9 @@ form {
     justify-content: center;
     align-items: center;
 }
+.user-card{
+    border: 2px solid red;
+    height: 3
+    0vh;
+    width: 20vw;
+}
